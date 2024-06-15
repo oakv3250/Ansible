@@ -1,0 +1,23 @@
+---
+- hosts: all 
+  become: True
+  tasks:
+    - name: Install nginx
+      package:
+        name: nginx
+        state: present
+    - name: Create user Osei
+      user:
+        name:
+        comment:
+        shell: /bin/bash
+    - name: Create group
+      group:
+        name: cloud team
+        state: present
+    - name: Create index file
+      file:
+        path: /var/www/html/index.html
+        state: touch
+    - name: Create directory
+      command: mkdir /tmp/os
