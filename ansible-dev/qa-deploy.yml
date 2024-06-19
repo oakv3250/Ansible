@@ -14,7 +14,7 @@
        register: pid_output
 
       - name: Kill Running App
-        shell: kill -9 pid_output.stout
+        shell: kill -9 {{ pid_output.stout }}
         when: pid_output.stout != ''
 
       - name: Download New Artifacts
